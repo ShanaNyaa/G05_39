@@ -5,7 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="assets/img/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="assets/img/favicon.ico"/>
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="assets/vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -36,38 +36,44 @@
 			<div class="login100-more" style="background-image: url('assets/img/car1.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
-				<form class="login100-form validate-form">
+				<form class="login100-form validate-form" action="processSignUp.php" method="POST">
 					<span class="login100-form-title p-b-59">
 						Sign Up
 					</span>
 					
-					<div class="wrap-input100 validate-input" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Username...">
+					<div class="wrap-input100 validate-input" data-validate="IC Number is required">
+						<span class="label-input100">IC Number</span>
+						<input class="input100" type="text" name="userID" placeholder="IC Number..." required>
 						<span class="focus-input100"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input" data-validate="Number is required">
-						<span class="label-input100">Contact Number</span>
-						<input class="input100" type="text" name="name" placeholder="011...">
-						<span class="focus-input100"></span>
-					</div>
-
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<span class="label-input100">Email</span>
-						<input class="input100" type="text" name="email" placeholder="Email addess...">
+						<input class="input100" type="email" name="email" placeholder="Email address..." required>
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "Password is required">
 						<span class="label-input100">Password</span>
-						<input class="input100" type="text" name="pass" placeholder="*************">
+						<input class="input100" type="password" name="password" placeholder="*************" required>
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate="Username is required">
+						<span class="label-input100">Username</span>
+						<input class="input100" type="text" name="username" placeholder="Username..." required>
+						<span class="focus-input100"></span>
+					</div>
+					
+					<div class="wrap-input100 validate-input" data-validate="Contact Number is required">
+						<span class="label-input100">Contact Number</span>
+						<input class="input100" type="text" name="contactNumber" placeholder="011..." required>
 						<span class="focus-input100"></span>
 					</div>
 					
 					<div class="flex-m w-full p-b-33">
 						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me" required>
 							<label class="label-checkbox100" for="ckb1">
 								<span class="txt1">
 									My information is
@@ -77,14 +83,12 @@
 								</span>
 							</label>
 						</div>
-
-						
 					</div>
 
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" type="submit" name="signUpButton">
 								Sign Up
 							</button>
 						</div>
