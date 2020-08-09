@@ -94,4 +94,20 @@ function updatePassword() {
 		</script>'";
 	}
 }
+
+function getUsername() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$email = $_SESSION["email"];
+	$sql = "select * from account where email = '".$email."'";
+	$result = mysqli_query($con, $sql);
+	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
+	if($count == 1){
+		$row = mysqli_fetch_assoc($result);
+		$username = $row['username'];
+		return $username;
+	}
+}
 ?>
