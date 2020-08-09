@@ -100,8 +100,8 @@ function getUsername() {
 	if (mysqli_connect_errno()) {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
-	$email = $_SESSION["email"];
-	$sql = "select * from account where email = '".$email."'";
+	$userID = $_SESSION["userID"];
+	$sql = "select * from account where userID = '".$userID."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -109,5 +109,113 @@ function getUsername() {
 		$username = $row['username'];
 		return $username;
 	}
+}
+
+function getContactNumber() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$userID = $_SESSION["userID"];
+	$sql = "select * from account where userID = '".$userID."'";
+	$result = mysqli_query($con, $sql);
+	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
+	if($count == 1){
+		$row = mysqli_fetch_assoc($result);
+		$contactNumber = $row['contactNumber'];
+		return $contactNumber;
+	}
+}
+
+function getUserID() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$email = $_SESSION["email"];
+	$sql = "select * from account where email = '".$email."'";
+	$result = mysqli_query($con, $sql);
+	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
+	if($count == 1){
+		$row = mysqli_fetch_assoc($result);
+		$userID = $row['userID'];
+		return $userID;
+	}
+}
+
+function getEmail() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$userID = $_SESSION["userID"];
+	$sql = "select * from account where userID = '".$userID."'";
+	$result = mysqli_query($con, $sql);
+	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
+	if($count == 1){
+		$row = mysqli_fetch_assoc($result);
+		$email = $row['email'];
+		return $email;
+	}
+}
+
+function getPassword() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$userID = $_SESSION["userID"];
+	$sql = "select * from account where userID = '".$userID."'";
+	$result = mysqli_query($con, $sql);
+	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
+	if($count == 1){
+		$row = mysqli_fetch_assoc($result);
+		$password = $row['password'];
+		return $password;
+	}
+}
+
+function updateProfile() {
+	$qry = getUserInformation();
+	$row = mysqli_fetch_assoc($qry);
+	$userID = $_POST["userID"];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+	$username = $_POST["username"];
+	$contactNumber = $_POST["contactNumber"];
+	$userType = $row["userType"];
+	
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	else {
+		$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" where userID = "'.$userID.'"';
+		$qry = mysqli_query($con, $sqlStr); //execute query
+		mysqli_close($con);
+		echo "<script>;
+		alert('Information updated successfully');
+		window.location.href='memberHomepage.php';
+		</script>";
+	}
+}
+
+function uploadPicture() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	
+	session_start();
+	$userID = $_SESSION["userID"];
+
+	$imgData = addslashes(file_get_contents($_FILES['profilePicture']['tmp_name']));
+	$imageProperties = getimageSize($_FILES['profilePicture']['tmp_name']);
+	$sqlStr = 'update account set imageType = "'.$imageProperties['mime'].'", imageData = "'.$imgData.'" where userID = "'.$userID.'"';
+	mysqli_query($con, $sqlStr);
+	echo "<script>;
+	alert('Profile picture updated successfully');
+	window.location.href='memberHomepage.php';
+	</script>";
 }
 ?>
