@@ -32,7 +32,7 @@ $isValidUser = validatePassword($email, $password);
 if($isValidUser) {
     $userType = getUserType($email);
     if($userType == 'member')
-	    header("location: memberHomepage.html");
+	    header("location: memberHomepage.php");
     if($userType == 'admin')
         header("location: adminHomepage.html");
 }
