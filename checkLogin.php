@@ -27,6 +27,7 @@ $_SESSION["email"] = $_POST["email"];
 $_SESSION["password"] = $_POST["password"];
 $email = $_POST["email"];
 $password = $_POST["password"];
+$_SESSION["userID"] = getUserID();
 $isValidUser = validatePassword($email, $password);
 
 if($isValidUser) {
