@@ -158,6 +158,9 @@
     if(!isset($_SESSION["email"]) && $_SESSION["password"] != "") {
         header("location: index.html");
     }
+	
+	include "user.php";
+	$userID = getUserID();
 ?>
 </head>
 <body>
@@ -231,7 +234,6 @@
             <div class="row" id="main" >
                 <div class="col-sm-12 col-md-12 well" id="content">
                     <?php 
-					include "user.php";
 					$username = getUsername();
 					echo "<h1>Welcome ".$username."!</h1>";
 					?>
