@@ -35,7 +35,7 @@ if($isValidUser) {
     if($userType == 'member')
 	    header("location: memberHomepage.php");
     if($userType == 'admin')
-        header("location: adminHomepage.html");
+        header("location: adminHomepage.php");
 }
 
 else {
