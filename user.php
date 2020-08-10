@@ -193,10 +193,18 @@ function updateProfile() {
 		$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" where userID = "'.$userID.'"';
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
-		echo "<script>;
-		alert('Information updated successfully');
-		window.location.href='memberHomepage.php';
-		</script>";
+		if($userType == "member") {
+			echo "<script>;
+			alert('Information updated successfully');
+			window.location.href='memberHomepage.php';
+			</script>";
+		}
+		if($userType == "admin") {
+			echo "<script>;
+			alert('Information updated successfully');
+			window.location.href='adminHomepage.php';
+			</script>";
+		}
 	}
 }
 
@@ -208,14 +216,24 @@ function uploadPicture() {
 	
 	session_start();
 	$userID = $_SESSION["userID"];
+	$email = getEmail();
+	$userType = getUserType($email);
 
 	$imgData = addslashes(file_get_contents($_FILES['profilePicture']['tmp_name']));
 	$imageProperties = getimageSize($_FILES['profilePicture']['tmp_name']);
 	$sqlStr = 'update account set imageType = "'.$imageProperties['mime'].'", imageData = "'.$imgData.'" where userID = "'.$userID.'"';
 	mysqli_query($con, $sqlStr);
-	echo "<script>;
-	alert('Profile picture updated successfully');
-	window.location.href='memberHomepage.php';
-	</script>";
+	if($userType == "member") {
+		echo "<script>;
+		alert('Profile picture updated successfully');
+		window.location.href='memberHomepage.php';
+		</script>";
+	}
+	if($userType == "admin") {
+		echo "<script>;
+		alert('Profile picture updated successfully');
+		window.location.href='adminHomepage.php';
+		</script>";
+	}
 }
 ?>
