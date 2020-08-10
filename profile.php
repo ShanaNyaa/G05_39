@@ -56,7 +56,8 @@
               
 
 		<div class="text-center">
-        <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class="avatar img-circle img-thumbnail" alt="avatar">
+		<img src="imageView.php?userID=<?php echo $row["userID"];?>"
+		class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
 		<form action="processProfile.php" method="POST" enctype="multipart/form-data">
 			<input type="file" name="profilePicture" class="text-center center-block file-upload">
