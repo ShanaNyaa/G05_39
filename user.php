@@ -44,12 +44,12 @@ function addNewUserSignUp() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		echo "Connected";
 		$sqlStr = "insert into account
-		(userID, email, password, username, contactNumber, userType) 
+		(userID, email, password, username, contactNumber, imageType, imageData, userType) 
 		values 
-		('$userID', '$email', '$password', '$username', '$contactNumber', 'member')";
+		('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, 'member')";
 		$qry = mysqli_query($con, $sqlStr); //execute query
+		print_r($sqlStr);
 		mysqli_close($con);
 		echo "<script>;
 		alert('Sign up successful');
