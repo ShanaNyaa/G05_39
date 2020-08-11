@@ -100,7 +100,7 @@
          
                         <div class="col-xs-6">
                             <label for="email"><h4>Email</h4></label>
-							<input type="email" class="form-control" name="email" id="email" placeholder="email" title="Change your email if needed"
+							<input type="email" class="form-control" name="email" id="email" placeholder="email" required title="Change your email if needed"
 							<?php
 							echo "value='".$email."'";
 							?>
@@ -111,7 +111,7 @@
 					
 						<div class="col-xs-6">
 							<label for="username"><h4>Username</h4></label>
-							<input type="text" class="form-control" name="username" id="username" placeholder="username" title="Change your username if needed"
+							<input type="text" class="form-control" name="username" id="username" placeholder="username" required title="Change your username if needed"
 							<?php
 							echo "value='".$username."'";
 							?>
@@ -123,7 +123,7 @@
                           
 						<div class="col-xs-6">
 							<label for="password"><h4>Password</h4></label>
-							<input type="password" class="form-control" name="password" id="password" placeholder="enter password" title="Change your password if needed"
+							<input type="password" class="form-control" name="password" id="password" placeholder="enter password" required title="Change your password if needed"
 							<?php
 							echo "value='".$password."'";
 							?>
@@ -134,7 +134,7 @@
 					<div class="form-group">
 						<div class="col-xs-6">
 							<label for="contactNumber"><h4>Contact Number</h4></label>
-							<input type="text" class="form-control" name="contactNumber" id="contactNumber" placeholder="enter contact number" title="Change your contact number if needed"
+							<input type="text" class="form-control" name="contactNumber" id="contactNumber" placeholder="enter contact number" required title="Change your contact number if needed"
 							<?php
 							echo "value='".$contactNumber."'";
 							?>
@@ -145,7 +145,7 @@
                           
 						<div class="col-xs-6">
 							<label for="userID"><h4>IC Number</h4></label>
-							<input type="text" readonly class="form-control" name="userID" id="userID" placeholder="enter your ic number" title="If want to change, please contact the admin"
+							<input type="text" readonly class="form-control" name="userID" id="userID" placeholder="enter your ic number" required title="If want to change, please contact the admin"
 							<?php
 							echo "value='".$userID."'";
 							?>
