@@ -236,4 +236,31 @@ function uploadPicture() {
 		</script>";
 	}
 }
+
+function deleteMember() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$userID = $_POST['userIDToDelete'];
+	$sqlStr = "delete from account where userID = '".$userID."'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	echo "<script>;
+	alert('Account deleted successfully');
+	window.location.href='memberList.php';
+	</script>";
+}
+
+function getListOfUser() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$sqlStr = "select * from account where userType = 'member'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	return $qry;
+}
+
 ?>
