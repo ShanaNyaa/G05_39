@@ -196,13 +196,10 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="memberList.php"><i class="fa fa-fw fa-user"></i> Member Settings</a>
+                    <a href="memberList.php"><i class="fa fa-fw fa-user"></i> Member List</a>
                 </li>
                 <li>
-                    <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>
-                </li>
-                <li>
-                    <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
+                    <a href="adminCarList.php"><i class="fa fa-fw fa-car"></i> Car List</a>
                 </li>
             </ul>
         </div>

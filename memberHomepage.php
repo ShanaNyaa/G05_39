@@ -196,7 +196,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="carList.php"><i class="fa fa-fw fa-car"></i> Car List</a>
+                    <a href="memberCarList.php"><i class="fa fa-fw fa-car"></i> Car List</a>
                 </li>
                 <li>
                     <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>
