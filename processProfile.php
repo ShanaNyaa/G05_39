@@ -22,4 +22,8 @@
 	if(isSet($_POST["uploadPictureButton"])) {
 	uploadPicture();
 	}
+
+	if(isSet($_POST["deleteButton"])) {
+		deleteMember();
+	}
 ?>
