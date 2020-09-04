@@ -237,7 +237,7 @@ function uploadPicture() {
 	}
 }
 
-function deleteMember() {
+function deleteUser() {
 	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
 	if (mysqli_connect_errno()) {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
@@ -252,12 +252,60 @@ function deleteMember() {
 	</script>";
 }
 
-function getListOfUser() {
+function getListOfMember() {
 	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
 	if (mysqli_connect_errno()) {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$sqlStr = "select * from account where userType = 'member'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	return $qry;
+}
+
+function searchMemberByUserID() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$userIDToSearch = $_POST["searchValue"];
+	$sqlStr = "select * from account where userID like '".$userIDToSearch."%'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	return $qry;
+}
+
+function searchMemberByEmail() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$emailToSearch = $_POST["searchValue"];
+	$sqlStr = "select * from account where email like '".$emailToSearch."%'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	return $qry;
+}
+
+function searchMemberByUsername() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$usernameToSearch = $_POST["searchValue"];
+	$sqlStr = "select * from account where username like '".$usernameIDToSearch."%'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	return $qry;
+}
+
+function searchMemberByContactNumber() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$contactNumberToSearch = $_POST["searchValue"];
+	$sqlStr = "select * from account where contactNumber like '".$contactNumberToSearch."%'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
