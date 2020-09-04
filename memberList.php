@@ -17,7 +17,7 @@
 </style>
 <?php
     include "user.php";
-    $memberList = getListOfUser();
+    $memberList = getListOfMember();
 
     if (isSet($_POST["searchByUserID"])) {
         $memberList = searchMemberByUserID();
@@ -39,8 +39,8 @@
 		$memberList = getListOfMember();
 	}
 	
-	if (isSet($_POST["addStaff"])) {
-		header("location: addStaff.php");
+	if (isSet($_POST["addUser"])) {
+		header("location: addUser.php");
 	}
 
     $noOfMember = mysqli_num_rows($memberList);
@@ -86,7 +86,7 @@
         echo '<button type="submit" class="btn btn-secondary mr-sm-2" name="searchByUsername">Search By Username</button>';
         echo '<button type="submit" class="btn btn-info mr-sm-2" name="searchByContactNumber">Search By Contact Number</button>';
         echo '<button type="submit" class="btn btn-danger mr-sm-2" name="displayAllButton">Display All</button>';
-        echo '<button type="submit" class="btn btn-light mr-sm-2" name="addStaff">Add Member</button></p>';
+        echo '<button type="submit" class="btn btn-light mr-sm-2" name="addUser">Add User</button></p>';
         echo '</form>';
     }
 ?>
