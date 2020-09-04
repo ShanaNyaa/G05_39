@@ -17,11 +17,35 @@
 </style>
 <?php
     include "user.php";
-
     $memberList = getListOfUser();
+
+    if (isSet($_POST["searchByUserID"])) {
+        $memberList = searchMemberByUserID();
+    }
+
+    if (isSet($_POST["searchByEmail"])) {
+		$memberList = searchMemberByEmail();
+	}
+	
+	if (isSet($_POST["searchByUsername"])) {
+		$memberList = searchMemberByUsername();
+	}
+	
+	if (isSet($_POST["searchByContactNumber"])) {
+		$memberList = searchMemberByContactNumber();
+	}
+	
+	if (isSet($_POST["displayAllButton"])) {
+		$memberList = getListOfMember();
+	}
+	
+	if (isSet($_POST["addStaff"])) {
+		header("location: addStaff.php");
+	}
+
     $noOfMember = mysqli_num_rows($memberList);
     echo '<div class="container-fluid">';
-    
+    displaySearchPanel();
     echo '<p style="color: white; text-shadow: 2px 2px 5px #000000">There are ' .$noOfMember. ' member</p>';
 	echo "<table class='table table-dark table-hover'>";
 	$bil = 1;
@@ -51,5 +75,18 @@
 	$bil++;
 	echo '</div>';
 	}
-	echo "</table>";
+    echo "</table>";
+    
+    function displaySearchPanel() {
+        echo '<form style="margin-top: 5px" action="memberList.php" method="POST">';
+        echo '<p style="color: white; text-shadow: 2px 2px 5px #000000">Search Member: ';
+        echo '<input class="form mr-sm-2" type="text" name="searchValue">';
+        echo '<button type="submit" class="btn btn-primary mr-sm-2" name="searchByUserID">Search By User ID</button>';
+        echo '<button type="submit" class="btn btn-dark mr-sm-2" name="searchByEmail">Search By Email</button>';
+        echo '<button type="submit" class="btn btn-secondary mr-sm-2" name="searchByUsername">Search By Username</button>';
+        echo '<button type="submit" class="btn btn-info mr-sm-2" name="searchByContactNumber">Search By Contact Number</button>';
+        echo '<button type="submit" class="btn btn-danger mr-sm-2" name="displayAllButton">Display All</button>';
+        echo '<button type="submit" class="btn btn-light mr-sm-2" name="addStaff">Add Member</button></p>';
+        echo '</form>';
+    }
 ?>
