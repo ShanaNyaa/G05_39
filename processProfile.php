@@ -24,6 +24,6 @@
 	}
 
 	if(isSet($_POST["deleteButton"])) {
-		deleteMember();
+		deleteUser();
 	}
 ?>
