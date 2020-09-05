@@ -26,4 +26,12 @@
 	if(isSet($_POST["deleteButton"])) {
 		deleteUser();
 	}
+
+	if(isSet($_POST["updateButton"])) {
+		updateMember();
+	}
+
+	if(isSet($_POST["addButton"])) {
+		addUser();
+	}
 ?>
