@@ -269,7 +269,7 @@ function searchMemberByUserID() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userIDToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where userID like '".$userIDToSearch."%'";
+	$sqlStr = "select * from account where userID like '".$userIDToSearch."%' and userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -281,7 +281,7 @@ function searchMemberByEmail() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$emailToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where email like '".$emailToSearch."%'";
+	$sqlStr = "select * from account where email like '%".$emailToSearch."%' and userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -293,7 +293,7 @@ function searchMemberByUsername() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$usernameToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where username like '".$usernameIDToSearch."%'";
+	$sqlStr = "select * from account where username like '%".$usernameToSearch."%' and userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -305,7 +305,7 @@ function searchMemberByContactNumber() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$contactNumberToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where contactNumber like '".$contactNumberToSearch."%'";
+	$sqlStr = "select * from account where contactNumber like '".$contactNumberToSearch."%' and userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
