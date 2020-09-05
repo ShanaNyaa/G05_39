@@ -323,4 +323,48 @@ function getMemberInformation() {
 	return $qry;
 }
 
+function updateMember() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$userID = $_POST['userID'];
+	$email = $_POST['email'];
+	$password = $_POST['password'];
+	$username = $_POST['username'];
+	$contactNumber = $_POST['contactNumber'];
+	$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'" where userID = "'.$userID.'"';
+	mysqli_query($con, $sqlStr);
+	echo "<script>;
+	alert('Account updated successfully');
+	window.location.href='memberList.php';
+	</script>";
+}
+
+function addUser() {
+	$userID = $_POST["userID"];
+	$email = $_POST["email"];
+	$password = $_POST["password"];
+	$username = $_POST["username"];
+	$contactNumber = $_POST["contactNumber"];
+	$userType = $_POST["userType"];
+
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	else {
+		$sqlStr = "insert into account
+		(userID, email, password, username, contactNumber, imageType, imageData, userType) 
+		values 
+		('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, '$userType')";
+		$qry = mysqli_query($con, $sqlStr); //execute query
+		mysqli_close($con);
+		echo "<script>;
+		alert('Account added successfully');
+		window.location.href='memberList.php';
+		</script>";
+	}
+}
+
 ?>
