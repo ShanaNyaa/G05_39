@@ -49,19 +49,18 @@
     echo '<p style="color: white; text-shadow: 2px 2px 5px #000000">There are ' .$noOfMember. ' member</p>';
 	echo "<table class='table table-dark table-hover'>";
 	$bil = 1;
-	echo "<tr><th>#</th><th>User ID</th><th>Email</th><th>Password</th><th>Username</th><th>Contact Number</th>";
+	echo "<tr><th>#</th><th>User ID</th><th>Email</th><th>Username</th><th>Contact Number</th>";
 	while($row = mysqli_fetch_assoc($memberList)) {
 	echo "<tr>";
 	$userID = $row["userID"];
 		echo "<td>".$bil. "</td>";
 		echo "<td>".$row["userID"]."</td>";
 		echo "<td>".$row["email"]."</td>";
-		echo "<td>".$row["password"]."</td>";
 		echo "<td>".$row["username"]."</td>";
 		echo "<td>".$row["contactNumber"]."</td>";
 		echo "<td>";
-			echo '<form action="updateStaffForm.php" method="POST">';
-			echo "<input type='hidden' value='$userID' name='usernameToUpdate'>";
+			echo '<form action="updateMemberForm.php" method="POST">';
+			echo "<input type='hidden' value='$userID' name='userIDToUpdate'>";
 			echo '<button type="submit" class="btn btn-primary" name="updateButton">Update</button>';
 			echo "</form>";
 		echo "</td>";
