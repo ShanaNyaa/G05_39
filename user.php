@@ -311,4 +311,16 @@ function searchMemberByContactNumber() {
 	return $qry;
 }
 
+function getMemberInformation() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$userIDToUpdate = $_POST["userIDToUpdate"];
+	$sqlStr = "select * from account where userID = '".$userIDToUpdate."'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	return $qry;
+}
+
 ?>
