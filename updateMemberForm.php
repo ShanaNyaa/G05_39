@@ -23,7 +23,7 @@ include "user.php";
 $qry = getMemberInformation();
 $row = mysqli_fetch_assoc($qry);
 
-$userID = $row["userID"];
+$plateNumber = $row["userID"];
 $email = $row["email"];
 $password = $row["password"];
 $username = $row["username"];
@@ -34,7 +34,7 @@ echo '<h1 style="color: white; text-shadow: 2px 2px 5px #000000">Edit Account</h
 	echo '<div class="card bg-dark">';
 		echo '<div class="card-body text-white" style="box-shadow: 2px 2px 5px #000000">';
 			echo '<form action="processProfile.php" method="post">';
-				echo '<p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-left: 4px">User ID: <input type="text" name="userID" value="'.$userID.'" readonly>';
+				echo '<p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-left: 4px">User ID: <input class="text-muted" type="text" name="userID" value="'.$userID.'" readonly>';
 				echo '<p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-left: 25px">Email: <input type="email" name="email" value="'.$email.'">';
 				echo '<p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 18px">Password: <input type="password" name="password" value="'.$password.'">';
 				echo '<p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 23px">Username: <input type="text" name="username" value="'.$username.'">';
