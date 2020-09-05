@@ -46,7 +46,7 @@
     $noOfMember = mysqli_num_rows($memberList);
     echo '<div class="container-fluid">';
     displaySearchPanel();
-    echo '<p style="color: white; text-shadow: 2px 2px 5px #000000">There are ' .$noOfMember. ' member</p>';
+    echo '<p style="color: white; text-shadow: 2px 2px 5px #000000">There are ' .$noOfMember. ' member(s)</p>';
 	echo "<table class='table table-dark table-hover'>";
 	$bil = 1;
 	echo "<tr><th>#</th><th>User ID</th><th>Email</th><th>Username</th><th>Contact Number</th>";
