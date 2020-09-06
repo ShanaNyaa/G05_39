@@ -44,3 +44,4 @@ echo '<h1 style="color: white; text-shadow: 2px 2px 5px #000000">Edit Car</h1>';
 		echo '</div>';
 	echo '</div>';
 echo '</div>';
+?>
