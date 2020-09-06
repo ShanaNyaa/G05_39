@@ -12,4 +12,8 @@
     if(isSet($_POST["addButton"])) {
 		addCar();
     }
+
+    if(isSet($_POST["rentButton"])) {
+        rentCar();
+    }
 ?>
