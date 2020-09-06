@@ -28,9 +28,9 @@
                     <p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 9px">User ID: <input type="text" name="userID" placeholder="User ID" required>
                     <p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-left: 12px">Email: <input type="email" name="email" placeholder="Email" required>
                     <p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 30px">Password: <input type="password" name="password" placeholder="Password" required>
-					<p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 38px">Username: <input type="text" name="username" placeholder="Username" required>
+                    <p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 38px">Username: <input type="text" name="username" placeholder="Username" required>
                     <p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 14px">Contact: <input type="text" name="contactNumber" placeholder="Contact Number" required>
-					<p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 228px">User Type: <select input name="userType">
+                    <p style="text-shadow: 2px 2px 5px #000000; font-size: 24px; padding-right: 228px">User Type: <select input name="userType">
                         <option>member</option>
                         <option>admin</option>
                     </select>
