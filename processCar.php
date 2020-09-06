@@ -11,5 +11,5 @@
 
     if(isSet($_POST["addButton"])) {
 		addCar();
-	}
+    }
 ?>
