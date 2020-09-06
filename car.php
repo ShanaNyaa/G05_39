@@ -139,4 +139,48 @@ function addCar() {
 		</script>";
     }
 }
+
+function getCarInformationToRent() {
+    $con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$plateNumberToRent = $_POST["plateNumberToRent"];
+	$sqlStr = "select * from car where plateNumber = '".$plateNumberToRent."'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	return $qry;
+}
+
+function rentCar() {
+    include "user.php";
+
+    $userID = $_POST["userID"];
+    $username = $_POST["username"];
+    $email = $_POST["email"];
+    $contactNumber = $_POST["contactNumber"];
+    $rentDate = $_POST["rentDate"];
+    $plateNumber = $_POST["plateNumber"];
+	$carName = $_POST["carName"];
+	$brand = $_POST["brand"];
+	$colour = $_POST["colour"];
+    $year = $_POST["year"];
+
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	else {
+		$sqlStr = "insert into booking
+		(userID, username, email, contactNumber, rentDate, plateNumber, carName, brand, colour, year) 
+		values 
+		('$userID', '$username', '$email', '$contactNumber', '$rentDate', '$plateNumber', '$carName', '$brand', '$colour', '$year')";
+		$qry = mysqli_query($con, $sqlStr); //execute query
+		mysqli_close($con);
+		echo "<script>;
+		alert('Car rented successfully');
+		window.location.href='memberCarList.php';
+		</script>";
+    }
+}
 ?>
