@@ -198,12 +198,6 @@
                 <li>
                     <a href="memberCarList.php"><i class="fa fa-fw fa-car"></i> Car List</a>
                 </li>
-                <li>
-                    <a href="sugerencias"><i class="fa fa-fw fa-paper-plane-o"></i> MENU 4</a>
-                </li>
-                <li>
-                    <a href="faq"><i class="fa fa-fw fa fa-question-circle"></i> MENU 5</a>
-                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
