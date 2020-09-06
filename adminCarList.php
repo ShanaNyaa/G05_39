@@ -94,3 +94,4 @@
         echo '<button type="submit" class="btn btn-light mr-sm-2" name="addCar">Add Car</button></p>';
         echo '</form>';
     }
+?>
