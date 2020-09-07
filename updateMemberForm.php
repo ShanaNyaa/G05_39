@@ -23,7 +23,7 @@ include "user.php";
 $qry = getMemberInformation();
 $row = mysqli_fetch_assoc($qry);
 
-$plateNumber = $row["userID"];
+$userID = $row["userID"];
 $email = $row["email"];
 $password = $row["password"];
 $username = $row["username"];
