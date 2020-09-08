@@ -177,8 +177,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="https://bryanrojasq.wordpress.com">
-                <img src="http://placehold.it/200x50&text=LOGO" alt="LOGO">
+            <a class="navbar-brand" href="adminHomepage.php">
+                <img src="http://placehold.it/200x50&text=HOME" alt="LOGO">
             </a>
         </div>
         <!-- Top Menu Items -->
