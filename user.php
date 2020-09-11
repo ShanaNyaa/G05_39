@@ -49,7 +49,6 @@ function addNewUserSignUp() {
 		values 
 		('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, 'member')";
 		$qry = mysqli_query($con, $sqlStr); //execute query
-		print_r($sqlStr);
 		mysqli_close($con);
 		echo "<script>;
 		alert('Sign up successful');
