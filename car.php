@@ -10,66 +10,6 @@ function getListOfCar() {
 	return $qry;
 }
 
-function searchCarByPlateNumber() {
-	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
-	if (mysqli_connect_errno()) {
-		die("Failed to connect to MySQL: " .mysqli_connect_error());
-	}
-	$plateNumberToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from car where plateNUmber like '%".$plateNumberToSearch."%'";
-	$qry = mysqli_query($con, $sqlStr);
-	mysqli_close($con);
-	return $qry;
-}
-
-function searchCarByName() {
-	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
-	if (mysqli_connect_errno()) {
-		die("Failed to connect to MySQL: " .mysqli_connect_error());
-	}
-	$nameToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from car where carName like '%".$nameToSearch."%'";
-	$qry = mysqli_query($con, $sqlStr);
-	mysqli_close($con);
-	return $qry;
-}
-
-function searchCarByBrand() {
-	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
-	if (mysqli_connect_errno()) {
-		die("Failed to connect to MySQL: " .mysqli_connect_error());
-	}
-	$brandToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from car where brand like '%".$brandToSearch."%'";
-	$qry = mysqli_query($con, $sqlStr);
-	mysqli_close($con);
-	return $qry;
-}
-
-function searchCarByColour() {
-	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
-	if (mysqli_connect_errno()) {
-		die("Failed to connect to MySQL: " .mysqli_connect_error());
-	}
-	$colourToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from car where colour like '".$colourToSearch."%'";
-	$qry = mysqli_query($con, $sqlStr);
-	mysqli_close($con);
-	return $qry;
-}
-
-function searchCarByYear() {
-	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
-	if (mysqli_connect_errno()) {
-		die("Failed to connect to MySQL: " .mysqli_connect_error());
-	}
-	$yearToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from car where year like '".$yearToSearch."%'";
-	$qry = mysqli_query($con, $sqlStr);
-	mysqli_close($con);
-	return $qry;
-}
-
 function deleteCar() {
 	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
 	if (mysqli_connect_errno()) {
