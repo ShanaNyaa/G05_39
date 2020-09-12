@@ -214,7 +214,7 @@
             <div class="row" id="main">
                 <div class="col-sm-12 col-md-12 well well-sm" id="content">
                 <div class="form-group">
-                    <input class="form-control" id="tableSearch" type="text" placeholder="Type something to search list cars">
+                    <input class="form-control" id="tableSearch" type="text" placeholder="Type something to search">
                 </div>
                     <table class="table table-striped table-bordered">
                         <thead>
