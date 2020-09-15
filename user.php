@@ -5,11 +5,11 @@ function validatePassword($email, $password) {
 		echo mysqli_connect_error();
 		exit;
 	}
-	$sql = "SELECT * FROM account where email = '".$email."' and password ='".$password."'";
+	$sql = "SELECT * FROM account WHERE email = '".$email."' AND password ='".$password."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
-		return true; //username and password is valid
+		return true; //username AND password is valid
 	}
 	else {
 		return false; //invalid password
@@ -23,7 +23,7 @@ function getUserType($email) {
 		echo  mysqli_connect_error(); 
 		exit;
 	}
-	$sql = "SELECT * FROM account where email = '".$email."'";
+	$sql = "SELECT * FROM account WHERE email = '".$email."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -44,7 +44,7 @@ function addNewUserSignUp() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = "insert into account
+		$sqlStr = "INSERT INTO account
 		(userID, email, password, username, contactNumber, imageType, imageData, userType) 
 		values 
 		('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, 'member')";
@@ -63,7 +63,7 @@ function getUserInformation() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userID = $_POST["userID"];
-	$sqlStr = "select * from account where userID = '".$userID."'";
+	$sqlStr = "SELECT * FROM account WHERE userID = '".$userID."'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -84,7 +84,7 @@ function updatePassword() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" where userID = "'.$userID.'"';
+		$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" WHERE userID = "'.$userID.'"';
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
 		echo "<script>;
@@ -100,7 +100,7 @@ function getUsername() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userID = $_SESSION["userID"];
-	$sql = "select * from account where userID = '".$userID."'";
+	$sql = "SELECT * FROM account WHERE userID = '".$userID."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -116,7 +116,7 @@ function getContactNumber() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userID = $_SESSION["userID"];
-	$sql = "select * from account where userID = '".$userID."'";
+	$sql = "SELECT * FROM account WHERE userID = '".$userID."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -132,7 +132,7 @@ function getUserID() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$email = $_SESSION["email"];
-	$sql = "select * from account where email = '".$email."'";
+	$sql = "SELECT * FROM account WHERE email = '".$email."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -148,7 +148,7 @@ function getEmail() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userID = $_SESSION["userID"];
-	$sql = "select * from account where userID = '".$userID."'";
+	$sql = "SELECT * FROM account WHERE userID = '".$userID."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -164,7 +164,7 @@ function getPassword() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userID = $_SESSION["userID"];
-	$sql = "select * from account where userID = '".$userID."'";
+	$sql = "SELECT * FROM account WHERE userID = '".$userID."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -189,7 +189,7 @@ function updateProfile() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" where userID = "'.$userID.'"';
+		$sqlStr = 'UPDATE account SET email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" WHERE userID = "'.$userID.'"';
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
 		if($userType == "member") {
@@ -220,7 +220,7 @@ function uploadPicture() {
 
 	$imgData = addslashes(file_get_contents($_FILES['profilePicture']['tmp_name']));
 	$imageProperties = getimageSize($_FILES['profilePicture']['tmp_name']);
-	$sqlStr = 'update account set imageType = "'.$imageProperties['mime'].'", imageData = "'.$imgData.'" where userID = "'.$userID.'"';
+	$sqlStr = 'UPDATE account SET imageType = "'.$imageProperties['mime'].'", imageData = "'.$imgData.'" WHERE userID = "'.$userID.'"';
 	mysqli_query($con, $sqlStr);
 	if($userType == "member") {
 		echo "<script>;
@@ -242,7 +242,7 @@ function deleteUser() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userID = $_POST['userIDToDelete'];
-	$sqlStr = "delete from account where userID = '".$userID."'";
+	$sqlStr = "delete from account WHERE userID = '".$userID."'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	echo "<script>;
@@ -256,7 +256,7 @@ function getListOfMember() {
 	if (mysqli_connect_errno()) {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
-	$sqlStr = "select * from account where userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -268,7 +268,7 @@ function searchMemberByUserID() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userIDToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where userID like '".$userIDToSearch."%' and userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE userID LIKE '".$userIDToSearch."%' AND userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -280,7 +280,7 @@ function searchMemberByEmail() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$emailToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where email like '%".$emailToSearch."%' and userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE email LIKE '%".$emailToSearch."%' AND userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -292,7 +292,7 @@ function searchMemberByUsername() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$usernameToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where username like '%".$usernameToSearch."%' and userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE username LIKE '%".$usernameToSearch."%' AND userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -304,7 +304,7 @@ function searchMemberByContactNumber() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$contactNumberToSearch = $_POST["searchValue"];
-	$sqlStr = "select * from account where contactNumber like '".$contactNumberToSearch."%' and userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE contactNumber LIKE '".$contactNumberToSearch."%' AND userType = 'member'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -316,7 +316,7 @@ function getMemberInformation() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userIDToUpdate = $_POST["userIDToUpdate"];
-	$sqlStr = "select * from account where userID = '".$userIDToUpdate."'";
+	$sqlStr = "SELECT * FROM account WHERE userID = '".$userIDToUpdate."'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -332,7 +332,7 @@ function updateMember() {
 	$password = $_POST['password'];
 	$username = $_POST['username'];
 	$contactNumber = $_POST['contactNumber'];
-	$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'" where userID = "'.$userID.'"';
+	$sqlStr = 'UPDATE account SET email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'" WHERE userID = "'.$userID.'"';
 	mysqli_query($con, $sqlStr);
 	echo "<script>;
 	alert('Account updated successfully');
@@ -353,9 +353,9 @@ function addUser() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = "insert into account
+		$sqlStr = "INSERT INTO account
 		(userID, email, password, username, contactNumber, imageType, imageData, userType) 
-		values 
+		VALUES 
 		('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, '$userType')";
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
