@@ -231,7 +231,7 @@
                                                 echo "<td>".$row["brand"]."</td>";
                                                 echo "<td>".$row["colour"]."</td>";
                                                 echo "<td>".$row["year"]."</td>";
-                                                echo "<td>";
+                                                echo "<td class='text-center'>";
                                                     echo '<form action="rentCarForm.php" method="POST">';
                                                     echo "<input type='hidden' value='$plateNumber' name='plateNumberToRent'>";
                                                     echo '<button type="submit" class="btn btn-primary" name="rentButton">Rent</button>';
