@@ -247,16 +247,16 @@ function deleteUser() {
 	mysqli_close($con);
 	echo "<script>;
 	alert('Account deleted successfully');
-	window.location.href='memberList.php';
+	window.location.href='userList.php';
 	</script>";
 }
 
-function getListOfMember() {
+function getListOfUser() {
 	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
 	if (mysqli_connect_errno()) {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
-	$sqlStr = "SELECT * FROM account WHERE userType = 'member'";
+	$sqlStr = "SELECT * FROM account";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -268,7 +268,7 @@ function searchMemberByUserID() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$userIDToSearch = $_POST["searchValue"];
-	$sqlStr = "SELECT * FROM account WHERE userID LIKE '".$userIDToSearch."%' AND userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE userID LIKE '".$userIDToSearch."%'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -280,7 +280,7 @@ function searchMemberByEmail() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$emailToSearch = $_POST["searchValue"];
-	$sqlStr = "SELECT * FROM account WHERE email LIKE '%".$emailToSearch."%' AND userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE email LIKE '%".$emailToSearch."%'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -292,7 +292,7 @@ function searchMemberByUsername() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$usernameToSearch = $_POST["searchValue"];
-	$sqlStr = "SELECT * FROM account WHERE username LIKE '%".$usernameToSearch."%' AND userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE username LIKE '%".$usernameToSearch."%'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -304,7 +304,7 @@ function searchMemberByContactNumber() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$contactNumberToSearch = $_POST["searchValue"];
-	$sqlStr = "SELECT * FROM account WHERE contactNumber LIKE '".$contactNumberToSearch."%' AND userType = 'member'";
+	$sqlStr = "SELECT * FROM account WHERE contactNumber LIKE '".$contactNumberToSearch."%'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	return $qry;
@@ -322,7 +322,7 @@ function getMemberInformation() {
 	return $qry;
 }
 
-function updateMember() {
+function updateUser() {
 	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
 	if (mysqli_connect_errno()) {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
@@ -336,7 +336,7 @@ function updateMember() {
 	mysqli_query($con, $sqlStr);
 	echo "<script>;
 	alert('Account updated successfully');
-	window.location.href='memberList.php';
+	window.location.href='userList.php';
 	</script>";
 }
 
@@ -361,7 +361,7 @@ function addUser() {
 		mysqli_close($con);
 		echo "<script>;
 		alert('Account added successfully');
-		window.location.href='memberList.php';
+		window.location.href='userList.php';
 		</script>";
 	}
 }

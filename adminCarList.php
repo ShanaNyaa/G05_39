@@ -205,7 +205,7 @@
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
                 <li>
-                    <a href="memberList.php"><i class="fa fa-fw fa-user"></i> Member List</a>
+                    <a href="userList.php"><i class="fa fa-fw fa-user"></i> User List</a>
                 </li>
                 <li>
                     <a href="adminCarList.php"><i class="fa fa-fw fa-car"></i> Car List</a>

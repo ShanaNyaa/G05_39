@@ -28,7 +28,7 @@
 	}
 
 	if(isSet($_POST["updateButton"])) {
-		updateMember();
+		updateUser();
 	}
 
 	if(isSet($_POST["addButton"])) {
