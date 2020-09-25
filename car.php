@@ -112,9 +112,9 @@ function rentCar() {
 	}
 	else {
         $sqlStr = "insert into booking
-        (plateNumber, carName, brand, colour, year, rentDate, userID, username, email, contactNumber)
+        (plateNumber, carName, brand, colour, year, rentDate, userID, username, email, contactNumber, approval)
         values
-        ('$plateNumber', '$carName', '$brand', '$colour', '$year', '$rentDate', '$userID', '$username', '$email', '$contactNumber')";
+        ('$plateNumber', '$carName', '$brand', '$colour', '$year', '$rentDate', '$userID', '$username', '$email', '$contactNumber', 'Waiting For Approval')";
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
 		echo "<script>;
