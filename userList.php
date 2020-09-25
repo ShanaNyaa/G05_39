@@ -165,7 +165,7 @@
     $bil = 1;
 
     if (isSet($_POST["addUser"])) {
-		header("location: addUser.php");
+		header("location: addUser.html");
 	}
 ?>
 </head>
