@@ -36,6 +36,8 @@ function getUserType($email) {
 function addNewUserSignUp() {
 	$userID = $_POST["userID"];
 	$email = $_POST["email"];
+	$_SESSION["userID"] = $userID;
+	$_SESSION["email"] = $email;
 	$password = $_POST["password"];
 	$username = $_POST["username"];
 	$contactNumber = $_POST["contactNumber"];
@@ -44,16 +46,25 @@ function addNewUserSignUp() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = "INSERT INTO account
-		(userID, email, password, username, contactNumber, imageType, imageData, userType) 
-		values 
-		('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, 'member')";
-		$qry = mysqli_query($con, $sqlStr); //execute query
-		mysqli_close($con);
-		echo "<script>;
-		alert('Sign up successful');
-		window.location.href='login.html';
-		</script>'";
+		if ($email == getEmail() || $userID == getUserID()){
+			echo "<script>
+			alert('User ID or email has been used');
+			window.location.href='signUp.html';
+			</script>";
+		}
+
+		else {
+			$sqlStr = "INSERT INTO account
+			(userID, email, password, username, contactNumber, imageType, imageData, userType) 
+			values 
+			('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, 'member')";
+			$qry = mysqli_query($con, $sqlStr); //execute query
+			mysqli_close($con);
+			echo "<script>;
+			alert('Sign up successful');
+			window.location.href='login.html';
+			</script>";
+		}
 	}
 }
 
@@ -90,7 +101,7 @@ function updatePassword() {
 		echo "<script>;
 		alert('Set new password successful');
 		window.location.href='login.html';
-		</script>'";
+		</script>";
 	}
 }
 
