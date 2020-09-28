@@ -60,7 +60,7 @@
 		class="avatar img-circle img-thumbnail" alt="avatar">
         <h6>Upload a different photo...</h6>
 		<form action="processProfile.php" method="POST" enctype="multipart/form-data">
-			<input type="file" name="profilePicture" class="text-center center-block file-upload">
+			<input type="file" name="profilePicture" class="text-center center-block file-upload" accept="image/*">
 			<input type="submit" name="uploadPictureButton" value="Upload">
 		</form>
 		</div></hr><br>
