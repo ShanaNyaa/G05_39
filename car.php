@@ -16,7 +16,7 @@ function deleteCar() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	$plateNumber = $_POST['plateNumberToDelete'];
-	$sqlStr = "delete from car where plateNumber = '".$plateNumber."'";
+	$sqlStr = "DELETE FROM car WHERE plateNumber = '".$plateNumber."'";
 	$qry = mysqli_query($con, $sqlStr);
 	mysqli_close($con);
 	echo "<script>;
@@ -111,16 +111,28 @@ function rentCar() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-        $sqlStr = "insert into booking
+        $sqlStr = "INSERT INTO booking
         (plateNumber, carName, brand, colour, year, rentDate, userID, username, email, contactNumber, approval)
-        values
-        ('$plateNumber', '$carName', '$brand', '$colour', '$year', '$rentDate', '$userID', '$username', '$email', '$contactNumber', 'Waiting For Approval')";
+        VALUES
+		('$plateNumber', '$carName', '$brand', '$colour', '$year', '$rentDate', '$userID', '$username', '$email', '$contactNumber', 'Waiting For Approval')";
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
-		echo "<script>;
-		alert('Car rented successfully');
-		window.location.href='memberCarList.php';
-		</script>";
+		deleteCarAfterRent();
     }
+}
+
+function deleteCarAfterRent() {
+	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
+	if (mysqli_connect_errno()) {
+		die("Failed to connect to MySQL: " .mysqli_connect_error());
+	}
+	$plateNumber = $_POST['plateNumber'];
+	$sqlStr = "DELETE FROM car WHERE plateNumber = '".$plateNumber."'";
+	$qry = mysqli_query($con, $sqlStr);
+	mysqli_close($con);
+	echo "<script>;
+	alert('Car rented successfully');
+	window.location.href='memberCarList.php';
+	</script>";
 }
 ?>
