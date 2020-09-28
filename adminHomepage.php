@@ -201,6 +201,9 @@
                 <li>
                     <a href="adminCarList.php"><i class="fa fa-fw fa-car"></i> Car List</a>
                 </li>
+                <li>
+                    <a href="adminBookingList.php"><i class="fa fa-fw fa-book"></i> Booking List</a>
+                </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
