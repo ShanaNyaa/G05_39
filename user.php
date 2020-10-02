@@ -5,7 +5,19 @@ function validatePassword($email, $password) {
 		echo mysqli_connect_error();
 		exit;
 	}
-	$sql = "SELECT * FROM account WHERE email = '".$email."' AND password ='".$password."'";
+	$stmt = $con->prepare("SELECT * FROM account WHERE email = ?");
+	$stmt->bind_param("s", $email);
+	$stmt->execute();
+	$user = $stmt->get_result()->fetch_assoc();
+
+	if ($user && password_verify($password, $user["password"])) {
+		return true;
+	}
+	else {
+		return false;
+	}
+
+	/*$sql = "SELECT * FROM account WHERE email = '".$email."' AND password ='".$password."'";
 	$result = mysqli_query($con, $sql);
 	$count = mysqli_num_rows($result); //check how many matching record - should be 1 if correct
 	if($count == 1){
@@ -13,7 +25,7 @@ function validatePassword($email, $password) {
 	}
 	else {
 		return false; //invalid password
-	}
+	}*/
 }
 
 	//getUserType from email
@@ -41,6 +53,7 @@ function addNewUserSignUp() {
 	$password = $_POST["password"];
 	$username = $_POST["username"];
 	$contactNumber = $_POST["contactNumber"];
+	$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
 	if (mysqli_connect_errno()) {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
@@ -57,7 +70,7 @@ function addNewUserSignUp() {
 			$sqlStr = "INSERT INTO account
 			(userID, email, password, username, contactNumber, imageType, imageData, userType) 
 			values 
-			('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, 'member')";
+			('$userID', '$email', '$hashedPassword', '$username', '$contactNumber', NULL, NULL, 'member')";
 			$qry = mysqli_query($con, $sqlStr); //execute query
 			mysqli_close($con);
 			echo "<script>;
@@ -95,7 +108,8 @@ function updatePassword() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = 'update account set email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" WHERE userID = "'.$userID.'"';
+		$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+		$sqlStr = 'update account set email = "'.$email.'", password = "'.$hashedPassword.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" WHERE userID = "'.$userID.'"';
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
 		echo "<script>;
@@ -200,7 +214,8 @@ function updateProfile() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = 'UPDATE account SET email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" WHERE userID = "'.$userID.'"';
+		$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+		$sqlStr = 'UPDATE account SET email = "'.$email.'", password = "'.$hashedPassword.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'", userType = "'.$userType.'" WHERE userID = "'.$userID.'"';
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
 		if($userType == "member") {
