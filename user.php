@@ -358,7 +358,8 @@ function updateUser() {
 	$password = $_POST['password'];
 	$username = $_POST['username'];
 	$contactNumber = $_POST['contactNumber'];
-	$sqlStr = 'UPDATE account SET email = "'.$email.'", password = "'.$password.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'" WHERE userID = "'.$userID.'"';
+	$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+	$sqlStr = 'UPDATE account SET email = "'.$email.'", password = "'.$hashedPassword.'", username = "'.$username.'", contactNumber = "'.$contactNumber.'" WHERE userID = "'.$userID.'"';
 	mysqli_query($con, $sqlStr);
 	echo "<script>;
 	alert('Account updated successfully');
@@ -373,6 +374,7 @@ function addUser() {
 	$username = $_POST["username"];
 	$contactNumber = $_POST["contactNumber"];
 	$userType = $_POST["userType"];
+	$hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
 	$con = mysqli_connect("localhost", "web39", "web39", "carrent");
 	if (mysqli_connect_errno()) {
@@ -382,7 +384,7 @@ function addUser() {
 		$sqlStr = "INSERT INTO account
 		(userID, email, password, username, contactNumber, imageType, imageData, userType) 
 		VALUES 
-		('$userID', '$email', '$password', '$username', '$contactNumber', NULL, NULL, '$userType')";
+		('$userID', '$email', '$hashedPassword', '$username', '$contactNumber', NULL, NULL, '$userType')";
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
 		echo "<script>;
