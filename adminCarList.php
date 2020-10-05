@@ -168,7 +168,7 @@
     $bil = 1;
 
     if (isSet($_POST["addCar"])) {
-		header("location: addCar.html");
+		header("location: addCar.php");
 	}
 ?>
 </head>

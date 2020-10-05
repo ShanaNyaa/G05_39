@@ -165,7 +165,7 @@
     $bil = 1;
 
     if (isSet($_POST["addUser"])) {
-		header("location: addUser.html");
+		header("location: addUser.php");
 	}
 ?>
 </head>
@@ -226,7 +226,7 @@
                     <table class="table table-striped table-bordered">
                         <thead>
                             <tr>
-                                <th>#</th><th>user ID</th><th>Email</th><th>Username</th><th>Contact Number</th><th>User Type</th>
+                                <th>#</th><th>User ID</th><th>Email</th><th>Username</th><th>Contact Number</th><th>User Type</th>
                                 <th colspan="2" class="text-center">
                                     <form action="userList.php" method="POST">
                                         <button type="submit" class="btn btn-primary" name="addUser">Add User</button>

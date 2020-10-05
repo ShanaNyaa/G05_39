@@ -67,9 +67,9 @@ function addCar() {
 		die("Failed to connect to MySQL: " .mysqli_connect_error());
 	}
 	else {
-		$sqlStr = "insert into car
+		$sqlStr = "INSERT INTO car
 		(plateNumber, carName, brand, colour, year) 
-		values 
+		VALUES 
 		('$plateNumber', '$carName', '$brand', '$colour', '$year')";
 		$qry = mysqli_query($con, $sqlStr); //execute query
 		mysqli_close($con);
